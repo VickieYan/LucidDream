@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>techNode</title>
+	<style>
+		*{margin: 0;padding: 0;}
+		a{text-decoration: none;}
+		ul,ol{list-style: none;}
+		input{border: none;}
+		body{background-image: url(images/body-bg.jpg);background-size: cover;}
+		.wrap{width: 980px;margin: 0 auto;}
+		header .logo{padding: 38px 0;}
+		nav{height: 40px;width: 100%;background: #888;border-radius: 7px;box-shadow: 0 5px 10px #222;margin-bottom: 30px}
+		nav a{color: white}
+		nav li{float: left;height: 40px;line-height: 40px;padding: 0 15px;}
+		nav ul{float: left;padding-left: 12px;}
+		nav form{position: relative;float: right;}
+		nav input{width: 118px;height: 27px;padding: 0 11px;line-height: 27px;border-radius: 4px;margin-top: 7px;margin-right: 10px;transition: width .5s;}
+		nav input:focus{width: 180px;}
+		.main article{float: left;width: 600px;background: white;border-radius: 7px;box-shadow: 0 0 10px #222;padding: 30px 35px 40px;}
+		.main article h3{font-size: 22px;line-height: 33px;}
+		.main article h4{font-size: 12px;line-height: 23px;}
+		.main article hgroup{padding-bottom: 10px;}
+		.main article img{margin-bottom: 27px;width: 100%;}
+		.main article p{line-height: 21px;color: #666;padding-bottom: 10px;}
+		.main article video{width: 100%;}
+		.main aside{float: right;}
+		#video{position: fixed;right: 0;bottom: 0;z-index: -999;width: auto;height: auto;min-width: 100%;min-height: 100%;}
+		aside{width: 240px;}
+		aside>div{background: white;padding: 0 20px;border-radius: 7px;box-shadow: 0 5px 10px #222;margin-bottom: 27px}
+		aside h3{font-size: 14px;line-height: 36px;border-bottom: 1px solid #ccc;}
+		aside li{font-size: 14px;line-height: 30px;border-bottom: 1px solid #ccc;}
+		aside li a{color: black;}
+		aside ul{padding-bottom: 20px}
+		aside .last{border: none;}
+		@media screen and (max-width: 1200px){
+			.wrap{width: 95%;}
+			.main article{width: 62.4%;padding: 30px 3.5% 40px;}
+			aside{width: 24.4%}
+		}
+		@media screen and (max-width: 640px){
+			.main article{float: none;padding: 30px 3.5% 40px;width: 93%}
+			aside{float: none;width: 100%;margin-top: 20px;}
+			nav{margin-bottom: 50px;width: 100%}
+			nav ul{float: none;width: 100%;}
+			nav input{position: absolute;top: -50px;right: 0}
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<video src='swf/Compress.MP4' autoplay loop id='video'></video>
+		<header>
+			<div class="logo"><img src="images/logo.png"></div>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="##">home</a></li>
+				<li><a href="##">Themify</a></li>
+				<li><a href="##">iconDock</a></li>
+				<li><a href="##">N.Design</a></li>
+			</ul>
+			<form>
+				<input placeholder="search" />
+			</form>
+		</nav>
+
+		<div class="main">
+			<article>
+				<hgroup>
+					<h3>Just a Post Title</h3>
+					<h4>May 8,2014 in Category</h4>
+				</hgroup>
+				<section>
+					<img src="images/sample-image.jpg">
+					<p>
+						Fusce ut sem est. In eu sagittis felis. In gravida arcu ut neque ornare vitae rutrum turpis vehicula. Nunc ultrices sem mollis metus rutrum non malesuada metus fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque interdum rutrum quam, a pharetra est pulvinar ac. Vestibulum congue nisl magna. Ut vulputate odio id dui convallis in adipiscing libero condimentum. Nunc et pharetra enim. Praesent pharetra, neque et luctus tempor, leo sapien faucibus leo, a dignissim turpis ipsum sed libero. Sed sed luctus purus. Aliquam faucibus turpis at libero consectetur euismod. Nam nunc lectus, congue non egestas quis, condimentum ut arcu. Nulla placerat, tortor non egestas rutrum, mi turpis adipiscing dui, et mollis turpis tortor vel orci. Cras a fringilla nunc. Suspendisse volutpat, eros congue scelerisque iaculis, magna odio sodales dui, vitae vulputate elit metus ac arcu. Mauris consequat rhoncus dolor id sagittis. Cras tortor elit, aliquet quis tincidunt eget, dignissim non tortor.
+					</p>
+					<video src="swf/Compress.MP4" autoplay="true" controls="controls" />
+				</section>
+			</article>
+			<aside>
+				<div class="sidebar">
+					<h3>Sidebar</h3>
+					<ul>
+						<li><a href="##">WordPress(3)</a></li>
+						<li><a href="##">WordPress(3)</a></li>
+						<li class="last"><a href="##">WordPress(3)</a></li>
+					</ul>
+				</div>
+				<div class="flickr">
+					<h3>Flickr</h3>
+				</div>
+			</aside>
+		</div>
+
+		<footer></footer>
+	</div>
+</body>
+</html>

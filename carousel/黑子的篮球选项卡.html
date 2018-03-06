@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul,ol,li{padding: 0;margin: 0;}
+			ul,ol{list-style: none;}
+			.box{position: relative;height: 480px;width: 800px;margin: 100px auto;}
+			ul{width: 80
+			0px;}
+			ul img{height: 100%;width: 100%;position: absolute;opacity: 0;transition: opacity 1s;}
+			ol{position: absolute;right: 20px;bottom: 30px;}
+			ol li{width: 20px;height: 20px;float: left;margin-left: 10px;background-color: rgba(0,0,0,0.5);color: white;line-height: 20px;text-align: center;}
+			.ac{background-color: rgba(225,0,0,0.5);cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li><img src="images/1.jpg" /></li>
+				<li><img src="images/2.jpg" /></li>
+				<li><img src="images/3.jpg" /></li>
+				<li><img src="images/4.jpg" /></li>
+				<li><img src="images/5.jpg" /></li>
+			</ul>
+			<ol>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ol>
+		</div>
+	</body>
+</html>
+<script>
+	(function(){
+		var arrPic = document.getElementsByTagName("ul")[0].getElementsByTagName("img");
+		var arrNum = document.getElementsByTagName("ol")[0].getElementsByTagName("li");
+		
+		arrPic[0].style.opacity = 1;
+		arrNum[0].className = "ac";
+		//给num绑定事件
+		for(var i=0;i<arrNum.length;i++){
+			run(i)
+		}
+		var m = 1;
+		//=================================================================
+		function run(num){
+			arrNum[num].onclick = function(){
+				//清除掉其他的样式
+				for(var j=0;j<arrNum.length;j++){
+					arrNum[j].className = "";
+					arrPic[j].style.opacity = 0;
+				}
+				arrNum[num].className = "ac";
+				arrPic[num].style.opacity = 1;
+				m = num;
+				clearInterval(timer);
+			}
+			arrNum[num].onmouseout = function(){
+				clearInterval(timer);
+				timer = setInterval(lunbo,2000);
+			}
+		}
+		
+		
+		//================================================================
+		
+		function lunbo(){
+			//清掉所有样式
+			for(var x=0;x<arrPic.length;x++){
+				arrPic[x].style.opacity = 0;
+				arrNum[x].className = "";
+			}
+			arrPic[m].style.opacity = 1;
+			arrNum[m].className = "ac";
+			m++;
+			if(m>=arrPic.length){
+				m=0;
+			}
+		}
+		var timer = setInterval(lunbo,2000);
+	})()
+	
+</script>

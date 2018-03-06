@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		ul,
+		ol,
+		li {
+			padding: 0;
+			margin: 0;
+		}
+
+		ul,
+		ol {
+			list-style: none;
+			position: relative;
+		}
+
+		ul li {
+			height: 480px;
+			width: 800px;
+			position: absolute;
+			opacity: 0;
+			transition: opacity 1s linear;
+		}
+
+		li img {
+			width: 100%;
+			height: 100%;
+		}
+
+		ul .first {
+			opacity: 1;
+		}
+
+		ol li {
+			height: 20px;
+			width: 20px;
+			background-color: rgba(0, 0, 0, 0.5);
+			color: white;
+			text-align: center;
+			float: left;
+			margin-left: 5px;
+			font-family: arial;
+			line-height: 20px;
+			cursor: pointer;
+		}
+
+		.box {
+			position: relative;
+			height: 480px;
+			width: 800px;
+			margin: 10% auto;
+		}
+
+		ol {
+			position: absolute;
+			z-index: 3;
+			bottom: 30px;
+			right: 20px;
+		}
+
+		.active {
+			background-color: rgba(225, 0, 0, 0.5);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<ul>
+			<li class="first">
+				<img src="images/1.jpg">
+			</li>
+			<li>
+				<img src="images/2.jpg">
+			</li>
+			<li>
+				<img src="images/3.jpg">
+			</li>
+			<li>
+				<img src="images/4.jpg">
+			</li>
+			<li>
+				<img src="images/5.jpg">
+			</li>
+		</ul>
+		<ol id="btns">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript">
+	var btns = document.getElementById("btns")
+	var arrPic = document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+	var arrNum = document.getElementsByTagName("ol")[0].getElementsByTagName("li");
+	var m = 1
+	for (var i = 0; i < arrNum.length; i++) {
+		//发标
+		arrNum[i].index = i;
+		//给每个数字绑定点击事件
+		arrNum[i].onclick = function () {
+			for (var j = 0; j < arrNum.length; j++) {
+				arrPic[j].style.opacity = 0;//所有图片透明度为0
+				arrNum[j].className = "";//所有按钮样式空
+			}
+			this.className = "active";//当前轮播图对应按钮给样式
+			arrPic[this.index].style.opacity = 1;//当前轮播图透明度为1 显示出来
+			m = this.index;//把按钮点击的索引赋值给m 方便正常秩序轮播
+			clearInterval(lb)//清除定时器
+		}
+	}
+	//轮播
+	function loop() {
+		for (var i = 0; i < arrPic.length; i++) {
+			arrPic[i].style.opacity = 0;//所有图片透明度为0
+			arrNum[i].className = "";//所有按钮样式空
+		}
+		arrPic[m].style.opacity = 1;//当前轮播图透明度为1 显示出来
+		arrNum[m].className = "active";//当前轮播图对应按钮给样式
+		m++;//m自增
+		if (m >= arrPic.length) { m = 0 }
+	}
+	var lb = setInterval(loop, 2000)
+	//当鼠标从按钮移出再次触发事件
+	btns.onmouseout = function () {
+		clearInterval(lb)//清除定时器（防止鼠标多次移出会无限触发定时器，提前清除）
+		lb = setInterval(loop, 1500)//再次轮播
+	}
+</script>

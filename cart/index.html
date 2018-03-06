@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			ul{list-style: none;}
+			#box{width: 600px;height: 400px;background: url(images/background.jpg) no-repeat;position: absolute;left: 50%;top: 50%;margin-left: -300px;margin-top: -200px;}
+			.left{width: 245px;margin-left: 30px;height: 400px;margin-right: 20px;margin-top: 60px;float: left;}
+			.left .bigpic{width:240px;height: 240px;}
+			.left .bigpic img{width: 100%;height: 100%;}
+			.left .smallpic{width:43px;height: 43px;margin-top: 10px;margin-right: 20px;border: 1px solid #CCCCCC;float: left;}
+			.left .smallpic img{width: 100%;height: 100%;}
+			.left .l_bot .last{margin-right: 0px;}
+			
+			.right{width: 260px;height: 400px;margin-top: 60px;float: left;}
+			.right .title{height: 40px;line-height: 40px;font-family: FangSong;font-weight: bold;font-size: 24px;color: #0e6b8d;}
+			.right .price{height: 130px;line-height: 130px;font-family: "微软雅黑";font-size: 40px;color: #C81623;}
+			.right ul{margin-bottom: 40px;overflow: hidden;}
+			.right li{height: 30px;width: 68px;margin-right: 25px;border: 1px solid #CCCCCC;float: left;line-height: 30px;background-color: #0e6b8d;opacity: .7;text-align: center;font-size: 14px;color: white;cursor: pointer;}
+		   	.right ul .last{margin-right:0;}
+		   	.right .number{height: 36px;width: 80px;border: 1px solid #CCCCCC;margin-left: 20px;background-color: white;opacity: .8;float: left;position: relative;}
+		   	
+		   	.right button{height: 38px;width: 100px;margin-left: 20px;background-color: #ccc;;opacity: .95;float: right;border-radius: 5px;line-height: 38px;color: white;font-size: 16px;text-align: center;cursor: pointer;border-left-style: none;border-right-style: none;border-top-style: none;border-bottom-style: none;}
+		   	.number div{height: 17px;line-height: 17px;}
+		   	.right .calu{border-left: 1px solid #CCCCCC;float: right;width: 20px;text-align: center;cursor: default;}
+		   	.right .substract {border-top: 1px solid #CCCCCC;}
+		   	.right input{border: none;width: 58px;height: 34px;position: absolute;left: 0;top: 0;text-align: center;}
+		    </style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="left">
+				<div class="l_top">
+					<div class="bigpic"><img src="images/合集.jpg" /></div>
+				</div>
+				<div class="l_bot">
+					<div class="smallpic"><img src="images/合集.jpg"/></div>
+					<div class="smallpic"><img src="images/男友1号.jpg" /></div>
+					<div class="smallpic"><img src="images/男友2号.jpg" /></div>
+					<div class="smallpic last"><img src="images/男友3号.jpg" /></div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="title">陌上谁家少年，足风流</div>
+				<div class="price">3498-9998元</div>
+				<ul>
+					<li>君墨</li>
+					<li>玄裳</li>
+					<li class="last">翊歌</li>
+				</ul>
+				<div class="number">
+					<input type="text" value="1" />
+					<div><div class="calu plus mark">+</div></div>
+					<div><div class="calu substract mark">-</div></div>
+				</div>
+				<button> 加入购物车</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var arrPic = ['<img src="images/合集.jpg" />','<img src="images/男友1号.jpg" />','<img src="images/男友2号.jpg" />','<img src="images/男友3号.jpg" />'];
+		var arrPrice = ['3498元','5698元','9998元'];
+		//选项卡
+		var arrSmallpic = document.getElementsByClassName("smallpic");
+		var oBigpic = document.getElementsByClassName("bigpic")[0];
+		var oPrice = document.getElementsByClassName("price")[0];
+		for(var i=0;i<arrSmallpic.length;i++){
+			//发标
+			arrSmallpic[i].index = i;
+			//给每个小图绑定事件
+			arrSmallpic[i].onmouseover = function(){
+				for(var y=0;y<arrSmallpic.length;y++){
+					arrSmallpic[y].style.borderColor = "#cccccc";
+				}
+				oBigpic.innerHTML = arrPic[this.index];
+				this.style.borderColor = "#c61823"
+				
+			}
+		}
+		
+		//给名片绑定点击事件
+		var oBtn = document.getElementsByTagName("button")[0];
+		var arrLi = document.getElementsByTagName("li");
+		for(var j=0;j<arrLi.length;j++){
+			arrLi[j].index = j+1;
+			arrLi[j].onclick = function(ev){
+				for(var x=0;x<arrLi.length;x++){
+					arrLi[x].style.borderColor = "#cccccc";
+					arrSmallpic[x+1].style.borderColor = "#cccccc";
+					arrLi[x].flag = true;
+				}
+				this.flag = false;
+				oBigpic.innerHTML = arrPic[this.index];
+				oPrice.innerHTML = arrPrice[this.index-1];
+				this.style.borderColor = "#c61823"
+				arrSmallpic[this.index].style.borderColor = "#c61823";
+				ev.stopPropagation();
+				oBtn.style.backgroundColor = "#c61823";
+
+			}
+		}
+		
+		oBtn.onclick = function(ev){
+			console.log(this.style.backgroundColor)
+			if(this.style.backgroundColor  == "rgb(198, 24, 35)"){
+				alert("加入成功");
+			}
+			ev.stopPropagation();
+		}
+		//通过事件委派 去掉红边框
+		//TODO 把购物车的数字恢复默认
+		var oBox = document.getElementById("box");
+//		oBox.addEventListener("mouseup",function(ev){
+//			var oElement = ev.target;
+//
+//			if(oElement.id == "box"){
+//				for(var p=0;p<arrSmallpic.length;p++){
+//					arrSmallpic[p].style.borderColor = "#cccccc";
+//				}
+//				for(var q=0;q<arrLi.length;q++){
+//					arrLi[q].style.borderColor = "#cccccc";
+//					arrLi[q].flag = true;
+//				}
+//				oPrice.innerHTML = "3498-9998元";
+//				oBigpic.innerHTML = "<img src='images/合集.jpg' />";
+//			}
+//			
+//		},false)
+
+		oBox.onclick = function(){
+			for(var p=0;p<arrSmallpic.length;p++){
+					arrSmallpic[p].style.borderColor = "#cccccc";
+				}
+				for(var q=0;q<arrLi.length;q++){
+					arrLi[q].style.borderColor = "#cccccc";
+					arrLi[q].flag = true;
+				}
+				oPrice.innerHTML = "3498-9998元";
+				oBigpic.innerHTML = "<img src='images/合集.jpg' />";
+				oBtn.style.backgroundColor = "#CCCCCC";
+				oInput.value = "1";
+		}
+		
+		//给number绑定事件
+		var oPlus = document.getElementsByClassName("plus")[0];
+		var oInput = document.getElementsByTagName("input")[0];
+		oPlus.onclick = function(ev){
+			oInput.value = parseInt(oInput.value)+1;
+			ev.stopPropagation();
+		}
+		var oSubstract = document.getElementsByClassName("substract")[0];
+		oSubstract.onclick = function(ev){
+			if(parseInt(oInput.value)-1<=0){
+				oInput.value = 1;
+			}else{
+				oInput.value = parseInt(oInput.value)-1;
+			}
+			ev.stopPropagation();
+		}
+		
+		
+//		document.onclick = function(){
+//			
+//			var flag = true;
+//			for(var m=0;m<arrLi.length;m++){
+//		
+//				flag = flag&&arrLi[m].flag
+//			}
+//			
+//			if(flag){
+//			console.log("ok")
+//				oBtn.style.backgroundColor = "#ccc";
+//			}else{
+//				oBtn.style.backgroundColor = "#c81623";
+//			}
+//		
+//		}
+		
+		</script>
+</html>

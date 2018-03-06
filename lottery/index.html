@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.title {
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+			margin-top: 100px;
+		}
+
+		.pool {
+			width: 800px;
+			height: 400px;
+			border: 1px solid pink;
+			margin: 0 auto;
+		}
+
+		.text {
+			height: 280px;
+		}
+
+		.text p {
+			height: 20px;
+			font-size: 18px;
+			padding-top: 50px;
+			padding-left: 100px;
+		}
+
+		.btn {
+			margin: 0 auto;
+			width: 450px;
+		}
+
+		button {
+			height: 50px;
+			line-height: 50px;
+			width: 100px;
+			font-size: 14px;
+			margin: 20px;
+		}
+
+		.first {
+			font-size: 20px;
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title">
+		<h1>幸运大抽奖</h1>
+	</div>
+	<div class="pool">
+		<div class="text">
+			<p class="third"></p>
+			<p class="second"></p>
+			<p class="first"></p>
+		</div>
+		<div class="btn">
+			<button id="btn1">三等奖5人</button>
+			<button id="btn2">二等奖3人</button>
+			<button id="btn3">一等奖1人</button>
+		</div>
+	</div>
+</body>
+<script src="jquery/jquery-1.11.3.js"></script>
+<script>
+	var arrStudent = ["杨雪峰", "黄磊", "李曈", "陆姿颖", "赵镇", "谢紫薇", "李青", "郑琳", "任利", "黄志坤", "陈红红", "周泽龙", "黄奕群", "胡佳宁", "颜文洁", "林晟光", "曹阳", "周天翼", "徐远娇", "王介然", "刘东", "吴婉菱", "赖姗姗", "唐果"];
+	$('#btn2').attr('disabled', 'true')
+	$('#btn3').attr('disabled', 'true')
+
+	//三等奖
+	$('#btn1').on('click', function () {
+		var arrThird = [];
+		for (var i = 1; i <= 5; i++) {
+			var index = parseInt(Math.random() * arrStudent.length);
+			arrThird.push(arrStudent.splice(index, 1));
+		}
+		$('.third').append("获得三等奖的是：");
+		var j = 0;
+		var timer = setInterval(function () {
+			$('.third').append(arrThird[j] + " ");
+			j++;
+			if (j == arrThird.length) {
+				clearInterval(timer);
+				$('#btn1').attr('disabled', 'true');
+				$('#btn2').removeAttr('disabled');
+			}
+		}, 500)
+	});
+
+	//二等奖
+	$('#btn2').on('click', function () {
+		var arrSecond = [];
+		for (var i = 1; i <= 3; i++) {
+			var index = parseInt(Math.random() * arrStudent.length);
+			arrSecond.push(arrStudent.splice(index, 1));
+		}
+		$('.second').append("获得二等奖的是：");
+		var j = 0;
+		var timer = setInterval(function () {
+			$('.second').append(arrSecond[j] + " ");
+			j++;
+			if (j == arrSecond.length) {
+				clearInterval(timer);
+				$('#btn2').attr('disabled', 'true');
+				$('#btn3').removeAttr('disabled');
+			}
+		}, 500)
+	});
+
+
+	//三等奖
+	$('#btn3').on('click', function () {
+		var arrFirst = [];
+		for (var i = 1; i <= 1; i++) {
+			var index = parseInt(Math.random() * arrStudent.length);
+			arrFirst.push(arrStudent.splice(index, 1));
+		}
+		$('.first').append("获得一等奖的是：");
+		var j = 0;
+		var timer = setInterval(function () {
+			$('.first').append(arrFirst[j] + " ");
+			j++;
+			if (j == arrFirst.length) {
+				clearInterval(timer);
+				$('#btn3').attr('disabled', 'true')
+			}
+		}, 500)
+	});
+</script>
+
+</html>
