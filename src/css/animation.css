@@ -1,0 +1,233 @@
+/*logo start*/
+@keyframes logo_part1{
+	0%{
+		width: 0px;
+	}
+	100%{
+		width: 81px;
+	}
+}
+
+@keyframes logo_part2{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+@keyframes logo_part3{
+	0%{
+		width: 0px;
+	}
+	
+	100%{
+		width: 104px;
+	}
+}
+
+.active .logo_part1 img{
+	animation: logo_part1 .5s linear;
+}
+
+.active .logo_part2 img{
+	opacity: 0;
+	animation: logo_part2 .5s linear;
+	animation-delay: .5s;
+	animation-fill-mode: forwards;
+}
+
+.active .logo_part3 img{
+	animation: logo_part3 .5s linear;
+}
+/*logo end*/
+
+/*nav start*/
+.header .nav li a:after{
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	background: #D11C2C;
+	left: 0;
+	bottom: -4px;
+	transform: scale(0,1);
+	transition: transform .3s;
+	transform-origin: right top;
+}
+.header .nav li a:hover:after{
+	transform-origin: left top;
+	transform: scale(1,1);
+	
+}
+/*nav end*/
+
+/*小球旋转start*/
+@keyframes rotate{
+	0%{
+		transform:  translate(-50%, -50%) rotateZ(0deg);
+	}
+	50%{
+		transform:  translate(-50%, -50%) rotateZ(180deg);
+	}
+	100%{
+		transform:  translate(-50%, -50%) rotateZ(360deg);
+	}
+}
+
+#bigBall{
+	animation-name: rotate;
+	animation-duration: 30s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+/*小球旋转end*/
+
+/*bubble移动start*/
+@keyframes bubble{
+	0%{
+		transform: translateX(0%) ;
+	}
+	100%{
+		transform: translateX(-80%);
+	}
+}
+
+.bub_con1{
+	transform: translateX(-100%);
+	animation: bubble 30s infinite linear;
+}
+/*bubble移动end*/
+
+/*more start*/
+@keyframes more{
+	0%{
+		bottom: -20px;
+		opacity: 0;
+	}
+	50%{
+		opacity: 1;
+	}
+	100%{
+		bottom: -30px;
+		opacity: 0;
+	}
+}
+
+#more{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	animation: more 1s linear infinite;
+}
+/*more end*/
+
+/*meteor start*/
+@keyframes meteor1{
+	0%{
+		transform: translate(500%,-500%);
+	}
+	100%{
+		transform: translate(-500%,500%);
+	}
+}
+.meteor1{
+	animation: meteor1 7s infinite linear;
+}
+
+@keyframes meteor2{
+	0%{
+		transform: translate(1000%,-1000%);
+	}
+	100%{
+		transform: translate(-1000%,1000%);
+	}
+}
+
+.meteor2{
+	animation: meteor3 13s infinite linear;
+}
+
+@keyframes meteor3{
+	0%{
+		transform: translate(1000%,-1000%);
+	}
+	100%{
+		transform: translate(-1500%,1500%);
+	}
+}
+
+.meteor3{
+	animation: meteor2 5s infinite linear;
+}
+
+@keyframes meteor4{
+	0%{
+		transform: translate(1500%,-1500%);
+	}
+	100%{
+		transform: translate(-1500%,1500%);
+	}
+}
+
+.meteor4{
+	animation: meteor3 10s infinite linear;
+}
+.meteor5{
+	animation: meteor2 12s infinite linear;
+}
+
+.meteor6{
+	animation: meteor4 10s infinite linear;
+}
+
+.meteor7{
+	animation: meteor4 12s infinite linear;
+}
+/*meteor end*/
+
+/*stellar start*/
+@keyframes stellar1{
+	0%{
+		transform: translateY(50%);
+	}
+	100%{
+		transform: translateY(-50%);
+	}
+}
+
+@keyframes stellar2{
+	0%{
+		transform: translateY(50%) rotateZ(10deg);
+	}
+	50%{
+		transform: translateY(0%) rotateZ(-10deg);
+	}
+	100%{
+		transform: translateY(-50%) rotateZ(10deg);
+	}
+}
+
+@keyframes stellar3{
+	0%{
+		transform: translateY(50%) rotateZ(-10deg);
+	}
+	100%{
+		transform: translateY(-50%) rotateZ(10deg);
+	}
+}
+
+.stellar1{
+	animation: stellar3 5s infinite ease alternate;
+}
+.stellar2{
+	animation: stellar3 5s infinite ease alternate;
+}
+.stellar3{
+	animation: stellar2 3s infinite ease alternate;
+}
+.stellar4{
+	animation: stellar1 4s infinite ease alternate;
+}
+/*stellar end*/
