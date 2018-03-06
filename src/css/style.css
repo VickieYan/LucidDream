@@ -14,14 +14,6 @@ ul{
 	list-style: none;
 }
 
-body {
-
-}
-
-.wrap{
-
-}
-
 .background{
 	position: fixed;
 	z-index: -100;
