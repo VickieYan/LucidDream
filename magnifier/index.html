@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			.box1 img{height: 100%;}
+			.box1{height: 200px;position: relative;left: 100px;top: 100px;width: 299.76px;}
+			.box2 img{height: 600px;}
+			span{width: 50px;height: 50px;background: lightgreen;opacity: .3;position: absolute;left: 0;top: 0;display: none;}
+			.box2{width: 150px;height: 150px;overflow: hidden;position: absolute;left: 400px;top: 100px;display: none;}
+			.box2 img{position: absolute;left: 0;top: 0;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<img src="images/019c92593bc3a6a8012193a3cf09ba.jpg@1280w_1l_2o_100sh.jpg" />
+			<span></span>
+		</div>
+		<div class="box2"><img src="images/019c92593bc3a6a8012193a3cf09ba.jpg@1280w_1l_2o_100sh.jpg" /></div>
+	</body>
+	<script src="jquery/jquery-1.11.3.js"></script>
+	<script>
+		$('.box1').on('mouseenter',function(ev){
+			$('span').css("display","block");
+			$('.box2').css("display","block");
+			$(this).on('mousemove',function(ev2){
+				var mouseX2 = ev2.pageX;
+				var mouseY2 = ev2.pageY;
+				var X = mouseX2-$(this).offset().left-$('span').width()/2;
+				var Y = mouseY2-$(this).offset().top-$('span').height()/2;
+				if(X<0){
+					X = 0;
+				}
+				if(Y<0){
+					Y = 0;
+				}
+				if(X>$('.box1 img').width()-$('span').width()){
+					X = $('.box1 img').width()-$('span').width();
+				}
+				if(Y>$('.box1 img').height()-$('span').height()){
+					Y = $('.box1 img').height()-$('span').height();
+				}
+				
+				$('span').css({
+					'left':X,
+					'top':Y
+				});
+				
+				$('.box2 img').css({
+					'left':-3*X,
+					'top':-3*Y
+				});
+			})
+		})
+		$('.box1').on('mouseleave',function(){
+			$('span').css("display","none");
+			$('.box2').css("display","none");
+		});
+	</script>
+</html>

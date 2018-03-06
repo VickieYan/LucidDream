@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+			canvas{box-shadow: 0 0 10px #666;position: absolute;margin: auto;left: 0;right: 0;top: 0;bottom: 0;}
+		</style>
+	</head>
+	<body>
+		<canvas height="500px" width="500px" id="cvs"></canvas>
+	</body>
+	
+	<script type="text/javascript">
+		(function(){
+			var canvas = document.getElementById('cvs');
+			var cvs = canvas.getContext('2d');
+			//构造函数
+			function Round(x,y,r,color,speed){
+				//初始化成员变量
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				this.color = color;
+				this.speed = speed;
+				this.max = 80;
+				this.state = true;
+				//画圆的方法
+				this.draw = function(){
+					cvs.beginPath();
+					cvs.arc(this.x,this.y,this.r,0,Math.PI*2);
+					cvs.fillStyle = this.color;
+					cvs.fill();
+					if(this.state){
+						this.r += this.speed;
+						if(this.r>this.max){
+							this.state = false;						
+						}
+					}else{
+						this.r -= this.speed;
+						if(this.r<0){
+							this.r = 0;
+							this.state = true;
+						}
+					}
+				}
+				
+			}
+//			var round1 = new Round(100,100,100,'pink');
+//			round1.draw();
+			/*生成一组圆*/
+			var arrRounds = [];
+			//得到画布范围
+			var cvsWidth = canvas.width;
+			var cvsHeight = canvas.height;
+			for(var i=0;i<50;i++){
+				//起始坐标
+				var x = Math.random()*cvsWidth;
+				var y = Math.random()*cvsHeight;
+				//设置一个半径范围
+				var r = Math.random()*50+10;
+				//设置透明度
+				var a = Math.random()*.5+.5;
+				//设置颜色
+				var color = "rgba("+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+","+a+")";
+				var speed = (Math.random()*2)+.5;
+				arrRounds.push(new Round(x,y,r,color,speed));
+			}
+			/*遍历数组 画圆*/
+			function change(){
+				for(var i=0;i<arrRounds.length;i++){
+					arrRounds[i].draw();
+				}
+			}
+			setInterval(function(){
+				cvs.clearRect(0,0,1000,500);
+				for(var i=0;i<arrRounds.length;i++){
+					arrRounds[i].draw();
+				}
+			},30)
+			
+			
+		})()
+		
+	</script>
+</html>

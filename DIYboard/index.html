@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DIYboard</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.center{position: absolute;margin: auto;left: 0;right: 0;top: 0;bottom: 0;width: 1200px;height: 700px;}
+			ul{list-style: none;}
+			li{width: 20px;height: 20px;border: 1px solid #666;margin-right: 10px;float: left;}
+			.board{text-align: center;}
+			canvas{box-shadow: 0 0 10px #ccc;margin-bottom: 10px;}
+			.toolbar{width: 1000px;height: 100px;display: inline-block;}
+			#black{background: black;}
+			#pink{background: pink;}
+			#palegreen{background: palegreen;}
+			#paleturquoise{background: paleturquoise;}
+			#peachpuff{background: peachpuff;}
+			#plum{background: plum;}
+			.col{float: left;}
+			.eraser{width: 25px;height: 25px;border: 1px solid #CCCCCC;border-radius: 50%;margin-left: 20px;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var canvas = document.getElementById('cvs');
+				var board = document.getElementsByClassName('board')[0];
+				var cvs = canvas.getContext('2d');
+				var color = "black";//默认颜色为黑色
+				var lineWidth = 1;
+				canvas.onmousedown = function(ev){
+					/*鼠标绘图功能*/
+					if(ev.button == 0){
+						var startx = ev.clientX;
+						var starty = ev.clientY;
+						cvs.beginPath();
+						cvs.strokeStyle = color;
+						cvs.lineWidth = lineWidth;
+						cvs.lineCap = "round";
+						cvs.lineJoin = "round";
+						cvs.moveTo(startx-canvas.offsetLeft-board.offsetLeft,starty-board.offsetTop);
+						canvas.onmousemove = function(ev2){
+							 paint(startx,starty,ev2);
+						}
+					}else if(ev.button == 2){
+						/*清空画布*/
+						cvs.clearRect(0,0,canvas.width,canvas.height)
+					}
+					
+					return false;
+				}
+				/*去掉右键默认事件*/
+				canvas.oncontextmenu = function(){
+					return false;
+				}
+				window.onmouseup = function(){
+					canvas.onmousemove = null;
+				}
+				function paint(startx,starty,ev){
+					cvs.lineTo(ev.clientX-canvas.offsetLeft-board.offsetLeft,ev.clientY-board.offsetTop);
+					cvs.stroke();
+				}
+				/*改变颜色*/
+				var arrColor = document.getElementsByClassName('color');
+				for(var i=0;i<arrColor.length;i++){
+					arrColor[i].onclick = function(){
+						color = this.id;
+					}
+				}
+				/*改变粗细*/
+				var oSelect = document.getElementsByTagName('select')[0];
+				oSelect.onchange = function(){
+					lineWidth = this.value;
+				}
+				/*橡皮擦*/
+				var eraser = document.getElementsByClassName('eraser')[0];
+				eraser.onclick = function(){
+					color = "white";
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="board center">
+			<canvas id="cvs" width="1000px" height="500px"></canvas>
+			<div class="toolbar">
+				<div class="tool colors">
+					<div class="col col-1">
+						<ul>
+							<li class="color" id="black"></li>
+							<li class="color" id="pink"></li>
+							<li class="color" id="palegreen"></li>
+							<li class="color" id="paleturquoise"></li>
+							<li class="color" id="peachpuff"></li>
+							<li class="color" id="plum"></li>
+						</ul>
+					</div>
+					<div class="col col-2">
+						画笔粗细：<select>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+						</select>
+					</div>
+					<div class="col col-3">
+						<div class="eraser"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

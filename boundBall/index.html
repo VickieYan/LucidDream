@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>BoundBall</title>
+		<style type="text/css">
+			.center{position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;}
+			canvas{box-shadow: 0 0 10px #666666;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var canvas = document.getElementById('cvs');
+				var cvs = canvas.getContext('2d');
+				/*构造方法*/
+				//x,y圆心坐标 r半径
+				function Ball(x,y,r,color,speedx,speedy){
+					this.x = x;
+					this.y = y;
+					this.r = r;
+					this.color = color;
+					this.speedx = speedx;
+					this.speedy = speedy;
+					this.switch
+					this.draw = function(){
+						cvs.beginPath();
+						cvs.fillStyle = color;
+						cvs.arc(this.x,this.y,this.r,0,Math.PI*2);
+						this.x += this.speedx;
+						this.y += this.speedy;
+						if(this.x+this.speedx+this.r>canvas.width){
+							this.x= canvas.width - this.speedx - this.r; 
+							this.speedx = -this.speedx;
+						}
+						if(this.y+this.speedy+this.r>canvas.height){
+							this.y= canvas.height - this.speedy - this.r; 
+							this.speedy = -this.speedy;
+						}
+						if(this.x+this.speedx-this.r<0){
+							this.x = this.r - this.speedx;
+							this.speedx = -this.speedx;
+						}
+						if(this.y+this.speedy-this.r<0){
+							this.y = this.r - this.speedy;
+							this.speedy = -this.speedy;
+						}
+						cvs.fill();
+					}
+					
+				}
+				/*随机生成若干个圆*/
+				var arrBalls = [];
+				for(var i=0;i<100;i++){
+					var x = Math.random()*canvas.width;
+					var y = Math.random()*canvas.height;
+					var r = Math.random()*50+10;
+					var a = Math.random()*.5+.5;
+					var color = 'rgba('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+a+')';
+					var speedx = Math.random()*3+1;
+					var speedy = Math.random()*3+1;
+					arrBalls.push(new Ball(x,y,r,color,speedx,speedy));
+				}
+				/*每个小圆球都调用draw方法*/
+				setInterval(function(){
+					cvs.clearRect(0,0,canvas.width,canvas.height)
+					for(var i=0;i<arrBalls.length;i++){
+						
+						arrBalls[i].draw();
+					}
+				},10)
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="cvs" class="center" width="1000px" height="500px"></canvas>
+	</body>
+</html>

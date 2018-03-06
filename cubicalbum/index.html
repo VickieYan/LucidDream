@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>cubic</title>
+	<style type="text/css">
+		.center {
+			position: absolute;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.box {
+			width: 980px;
+			height: 500px;
+			transform-style: preserve-3d;
+			perspective: 4000;
+		}
+
+		.circle {
+			position: absolute;
+			top: 0;
+			width: 98px;
+			height: 500px;
+			transform-style: preserve-3d;
+		}
+
+		.face {
+			position: absolute;
+			top: 0;
+			width: 98px;
+			height: 500px;
+			background-size: contain;
+		}
+
+		.face0 {
+			background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520949620&di=1307af413a56bc6d0fabefbed3b66798&imgtype=jpg&er=1&src=http%3A%2F%2Fattach1.92wy.com%2Fattachments%2Fday_150909%2F1509091418a90edd234bb15631.jpg);
+		}
+
+		.face1 {
+			background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520354916274&di=4fc07b65a610ddc73c385fdddd3a2a48&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Fb3119313b07eca801354e6ac962397dda144832c.jpg);
+		}
+
+		.face2 {
+			background: url(https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3307622143,3891888101&fm=27&gp=0.jpg);
+		}
+
+		.face3 {
+			background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520355032821&di=2b327ebfbad76d7a47a4ce28c8fae47f&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201503%2F29%2F20150329144614_TCCJd.jpeg);
+		}
+	</style>
+	<script src="jquery-3.1.0.min.js"></script>
+	<script>
+		$(function () {
+			for (var i = 0; i < 9; i++) {
+				var left = i * 98;
+				var circle = $('<div>').addClass('circle').appendTo('.box').css({
+					"left": left + "px"
+				});
+				for (var j = 0; j < 4; j++) {
+					$('<div>').addClass('face').appendTo(circle).addClass("face" + j).css({
+						"background-position": "-" + left + "px 0px",
+						"background-size": "cover",
+						"transform": "rotateX(" + j * 90 + "deg) translateZ(250px)"
+					});
+				}
+			}
+			var deg = 0;
+			$('.box').on('click', function () {
+				deg += 90;
+				$('.circle').each(function (index) {
+					$(this).css({
+						"transition": "transform .5s " + index * .1 + "s",
+						"transform": "rotateX(" + deg + "deg)"
+					})
+				})
+			})
+		})
+	</script>
+</head>
+
+<body>
+	<div class="box center"></div>
+</body>
+
+</html>

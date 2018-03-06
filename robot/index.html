@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;list-style: none;}
+			.box{position: relative;left: 50%;top: 250px;width: 400px;margin-left: -200px;}
+			.pool{height: 500px;width: 100%;border: 1px solid #ccc;overflow:auto;border-radius: 10px;padding: 15px;margin-bottom: 30px;background: rgba(175,171,171,0.6);}
+			.line{width: 100%;overflow: hidden;}
+			.test{padding: 15px;margin: 15px;color: black;line-height: 40px;font-size: 22px;font-family: "微软雅黑";border-radius: 10px;}
+			.test1{background: white;float: left;}
+			.test2{background: rgba(67,199,51,0.56);float: right;}
+			.inputWindow textarea{width: 100%;border: 1px solid #ccc;border-radius: 5px;padding: 15px;margin-bottom: 30px;resize: none;}
+			.sent{width: 100%}
+			.enter{float: right;margin-top: 20px;margin-right: 10px;}
+			button{padding: 10px;float: right;margin-right: -30px;}
+			input{width: 20px;height: 20px;}
+			i{text-decoration: underline;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="chatWindow">
+				<div class="pool">
+					<div class="line"><div class="test test1">欢迎来到HungerStrike</div></div>
+					
+					
+				</div>
+			</div>
+			<div class="inputWindow">
+				<textarea placeholder="输入内容..."></textarea>
+				<div class="sent">
+					<button disabled="disabled">发送</button>
+					<div class="enter"><input type="checkbox" />回车直接发言</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="jquery/jquery-1.11.3.js"></script>
+	<script>
+		var oPool = document.getElementsByClassName('pool')[0];
+		oPool.scrollTop = oPool.scrollHeight;
+		
+		$('textarea').on('keyup',function(){
+			if($('textarea').val()){
+				$('button').removeAttr('disabled');
+			}
+		});
+		$('button').on('click',function(){
+			var content = $('textarea').val();
+			$('.pool').append('<div class="line"><div class="test test2">'+$("textarea").val()+'</div></div>');
+			$('textarea').val('');
+			$('button').attr('disabled','disabled');
+			oPool.scrollTop = oPool.scrollHeight;
+			setTimeout(function(){
+				
+				if(content == "1"){
+					$('.pool').append('<div class="line"><div class="test test1">本公众号主要服务<br>·电影/动漫/歌曲推荐<br>·日语学习资料<br>·日语书籍推送<br>·N1真题放送</div></div>');
+				}else if(content == "2"){
+					$('.pool').append('<div class="line"><div class="test test1">生物股长 - 心の花を咲かせよう</div></div>');
+				}else if(content == "3"){
+					$('.pool').append('<div class="line"><div class="test test1">【埃罗芒阿老师】<br>日本轻小说作家伏见司继《我的妹妹哪有这么可爱！》完结之后的轻小说新作，插画同样由负责《我的妹妹哪有这么可爱！》插画的神崎广绘制。在2013年10月6日的“电击文库20周年纪念活动”上，伏见司公布了最新执笔小说《情色漫画老师》的消息。</div></div>');
+				}else if(content == "4"){
+					$('.pool').append('<div class="line"><div class="test test1">【明日的我与昨日的你约会】<br>《明日的我与昨日的你约会》是一部由福士苍汰和小松菜奈共同出演的影片，该片根据七月隆文同名小说改编、由三木孝浩执导。</div></div>');
+				}else if(content == "5"){
+					$('.pool').append('<div class="line"><div class="test test1">町の小さな郵便局に今週も彼女は現れた。局員たちに水曜日さんと呼ばれる彼女が今日差し出した手紙にはしかし宛名がない。「これじゃ届きませんよ」苦笑しながら顔を上げた彼の目に映ったのは、うつむき加減できゅっと口元を引き結び、真っ直ぐに彼を見つめる真摯な瞳だった。<br>她每周三都会来这所镇上的小邮局。邮局的人管她叫星期三小姐。今天她又如约而至……“对不起，这样写无法投递的”，拿着没有写对方姓名的信封，邮局的小伙子苦笑着抬头看了看她。 只见她微微低着头、抿着嘴，双眸闪烁着热切的目光，紧紧地盯着他。</div></div>');
+				}else if(content == "6"){
+					$('.pool').append('<div class="line"><div class="test test1">今回の大会では、若手の<i>躍進</i>が目立った。<br>  １．やくしん       ２．ようしん       ３． たくしん                ４．とうしん</div></div>');
+				}else if(content == "7"){
+					$('.pool').append('<div class="line"><div class="test test1">欢迎来信 ：me@wenjieyan.com</div></div>');
+				}
+				else{
+					$('.pool').append('<div class="line"><div class="test test1">回复数字<br>1:HungerStrike简介<br>2:今日歌曲<br>3:今日动漫<br>4:今日电影<br>5:今日读书<br>6:真题放送<br>6:联系我们</div></div>');
+				}
+				
+				oPool.scrollTop = oPool.scrollHeight;
+			},500)
+		});
+		
+		$('input').on('click',function(){
+
+			if($('input').prop('checked')){
+				
+			$('textarea').on('keydown',function(ev){
+				if(ev.which == 13){
+					if($('textarea').val()){
+						var content = $('textarea').val();
+						$('.pool').append('<div class="line"><div class="test test2">'+$("textarea").val()+'</div></div>');
+						oPool.scrollTop = oPool.scrollHeight;
+						$('textarea').on('keyup',function(){
+							$('textarea').val('');
+							$('button').attr('disabled','disabled');
+						});
+						setTimeout(function(){
+							if(content == "1"){
+								$('.pool').append('<div class="line"><div class="test test1">本公众号主要服务<br>·电影/动漫/歌曲推荐<br>·日语学习资料<br>·日语书籍推送<br>·N1真题放送</div></div>');
+							}else if(content == "2"){
+								$('.pool').append('<div class="line"><div class="test test1">生物股长 - 心の花を咲かせよう</div></div>');
+							}else if(content == "3"){
+								$('.pool').append('<div class="line"><div class="test test1">【埃罗芒阿老师】<br>日本轻小说作家伏见司继《我的妹妹哪有这么可爱！》完结之后的轻小说新作，插画同样由负责《我的妹妹哪有这么可爱！》插画的神崎广绘制。在2013年10月6日的“电击文库20周年纪念活动”上，伏见司公布了最新执笔小说《情色漫画老师》的消息。</div></div>');
+							}else if(content == "4"){
+								$('.pool').append('<div class="line"><div class="test test1">【明日的我与昨日的你约会】<br>《明日的我与昨日的你约会》是一部由福士苍汰和小松菜奈共同出演的影片，该片根据七月隆文同名小说改编、由三木孝浩执导。</div></div>');
+							}else if(content == "5"){
+								$('.pool').append('<div class="line"><div class="test test1">町の小さな郵便局に今週も彼女は現れた。局員たちに水曜日さんと呼ばれる彼女が今日差し出した手紙にはしかし宛名がない。「これじゃ届きませんよ」苦笑しながら顔を上げた彼の目に映ったのは、うつむき加減できゅっと口元を引き結び、真っ直ぐに彼を見つめる真摯な瞳だった。<br>她每周三都会来这所镇上的小邮局。邮局的人管她叫星期三小姐。今天她又如约而至……“对不起，这样写无法投递的”，拿着没有写对方姓名的信封，邮局的小伙子苦笑着抬头看了看她。 只见她微微低着头、抿着嘴，双眸闪烁着热切的目光，紧紧地盯着他。</div></div>');
+							}else if(content == "6"){
+								$('.pool').append('<div class="line"><div class="test test1">今回の大会では、若手の<i>躍進</i>が目立った。<br>  １．やくしん       ２．ようしん       ３． たくしん                ４．とうしん</div></div>');
+							}else if(content == "7"){
+								$('.pool').append('<div class="line"><div class="test test1">欢迎来信 ：me@wenjieyan.com</div></div>');
+							}
+							else{
+								$('.pool').append('<div class="line"><div class="test test1">回复数字<br>1:HungerStrike简介<br>2:今日歌曲<br>3:今日动漫<br>4:今日电影<br>5:今日读书<br>6:真题放送<br>6:联系我们</div></div>');
+							}
+							
+							oPool.scrollTop = oPool.scrollHeight;
+							$('textarea').unbind('keyup');
+						},500)
+					}
+				}
+				
+			});
+			
+			}else{
+				$('textarea').unbind('keydown');
+			}
+		})
+	</script>
+</html>

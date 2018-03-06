@@ -13,12 +13,18 @@ a{
 ul{
 	list-style: none;
 }
+
+body {
+
+}
+
 .wrap{
-	width: 100%;
+
 }
 
 .background{
 	position: fixed;
+	z-index: -100;
 }
 
 .background img{
@@ -27,8 +33,9 @@ ul{
 
 .main {
 	writing-mode: vertical-rl;
-	float: right;
+	/* float: right; */
 	padding: 40px;
+	text-indent: 2em;
 	line-height: 40px;
 	letter-spacing: 5px;
 }

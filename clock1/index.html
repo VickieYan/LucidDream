@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>clock</title>
+		<style>
+			.center{position: absolute;margin: auto;left: 0;right: 0;top: 0;bottom: 0;}
+			.circle{width: 300px;height: 300px;box-shadow: 0 0 40px red;border: 10px solid #666;border-radius: 50%;overflow: hidden;}
+			.inner_circle{width: 280px;height: 280px;border-radius: 50%;overflow: hidden;background: white;position: absolute;left: 10px;top: 10px;z-index: 3;}
+			.point{width: 10px;height: 10px;background: black;border-radius: 50%;position: absolute;left: 135px;top: 135px;z-index: 10;}
+			span{transform-origin: left;}
+			.num{position: absolute;font-family: arial;font-size: 22px;color: #666666;}
+			.num1{top: 5px;left: 130px;}
+			.num2{top: 130px;right: 5px;}
+			.num3{bottom: 5px;left: 135px;}
+			.num4{top: 130px;left: 5px;}
+			.line{position: absolute;transform-origin: bottom;}
+			.hour{width: 6px;height: 70px;background: black;left: 137px;top: 70px;}
+			.min{width: 4px;height: 100px;background: black;left: 138px;top: 40px;}
+			.sec{width:2px;height: 130px;background: #c61823;left: 139px;top: 10px;}
+		</style>
+		<script src="jquery-1.11.3.js"></script>
+		<script>
+			$(function(){
+				for(var i=0;i<60;i++){
+					if(i%5==0){
+						$('<span>').appendTo('.circle').css({
+							"width":"152px",
+							"height":"4px",
+							"position":"absolute",
+							"left":"150px",
+							"top":"150px",
+							"background-color":"black",
+							"transform":"rotateZ("+360/60*i+"deg)"
+						})
+					}else{
+						$('<span>').appendTo('.circle').css({
+							"width":"152px",
+							"height":"2px",
+							"position":"absolute",
+							"left":"150px",
+							"top":"150px",
+							"background-color":"#ccc",
+							"transform":"rotateZ("+360/60*i+"deg)"
+						})
+					}
+				}
+				function drawPoint(){
+					var d = new Date();
+					var hour = d.getHours()%12;
+					var min = d.getMinutes();
+					var sec = d.getSeconds();
+					var hourdeg = (hour+min/60+sec/60/60)*30;
+					var mindeg = (min+sec/60)*6
+					var secdeg = sec*6;
+					$('.hour').css({
+						"transform":"rotateZ("+hourdeg+"deg)"
+					});
+					$('.min').css({
+						"transform":"rotateZ("+mindeg+"deg)"
+					});
+					$('.sec').css({
+						"transform":"rotateZ("+secdeg+"deg)"
+					});
+				}
+				drawPoint();
+				setInterval(drawPoint,1000);
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div class="circle center">
+			<div class="inner_circle">
+				<div class="point"></div>
+				<div class="num num1">12</div>
+				<div class="num num2">3</div>
+				<div class="num num3">6</div>
+				<div class="num num4">9</div>
+				<div class="line hour"></div>
+				<div class="line min"></div>
+				<div class="line sec"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{overflow: hidden;}
+			.center{position: absolute;margin: auto;left: 0;right: 0;top: 0;bottom: 0;}
+			.wrap{width: 980px;height: 500px;}
+			.album{width: 980px;height: 500px;transform-style: preserve-3d;transform: rotateX(-20deg);perspective: 2000px;border-radius: 10px;border: 1px solid #ccc;}
+			.photo{position: absolute;width: 980px;height: 500px;background-size: cover;border-radius: 10px;transform-origin: bottom;transition: transform 1s;}
+			.btn{width: 50px;height: 50px;text-align: center;line-height: 50px;border: 1px solid #ccc;position: absolute;top: 200px;cursor: pointer;}
+			.l_btn{left: -100px;}
+			.r_btn{right: -100px;}
+			@keyframes flip{
+				from{opacity: 1;transform: rotateX(0);}
+				to{opacity: 0;transform: rotateX(-180deg);}
+			}
+			@keyframes unflip{
+				from{opacity: 0;transform: rotateX(-180deg);}
+				to{opacity: 1;transform: rotateX(0);}
+			}
+		</style>
+		<script src="jquery-1.11.3.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var num = 10;
+				init();
+				//布局初始化
+				function init(){
+					for(var i=0;i<num;i++){
+						$('<div>').addClass('photo').appendTo('.album').css({
+							"background-image":"url(imgs/"+i+".jpg)",
+							"transform":"translateZ(-"+100*i+"px)"
+						})
+					}
+				}
+				
+				var swith = false;
+				//next
+				$('.r_btn').on('click',function(){
+					if(swith){
+						return;
+					}
+					swith = true;
+					var first = $('.photo').eq(0);
+					first.css({
+						"animation":"flip 1s forwards"
+					})
+					setTimeout(function(){
+						//把第一张添加到最后一张
+						first.appendTo('.album').css({
+							"transform":"translateZ(-"+100*num+"px)",
+							"animation":""
+						})
+						setTimeout(function(){
+							$('.photo').each(function(index){
+								$(this).css({
+									"transform":"translateZ(-"+100*index+"px)",
+								})
+							})
+							swith = false;
+						},500)
+					},1000)
+				});
+				
+				
+				//prev
+				$('.l_btn').on('click',function(){
+					if(swith){
+						return;
+					}
+					swith = true;
+					var last = $('.photo').eq(num-1);
+					$('.photo').each(function(index){
+						$(this).css({
+							"transform":"translateZ(-"+100*(index+1)+"px)"
+						})
+					})
+					setTimeout(function(){
+						last.prependTo('.album').css({
+							"animation":"unflip 1s forwards"
+						});
+						setTimeout(function(){
+							last.prependTo('.album').css({
+								"opacity":"1",
+								"transform":"rotateX(0)",
+								"animation":""
+							});
+							swith = false;
+						},1500)
+					},1000)
+					
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="wrap center">
+			<div class="album"></div>
+			<div class="btn l_btn"><</div>
+			<div class="btn r_btn">></div>
+		</div>
+	</body>
+</html>

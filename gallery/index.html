@@ -1,0 +1,322 @@
+<html>
+
+<head>
+	<title>HungerStrike</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			background: rgba(0, 0, 0, 0.8);
+		}
+
+		.dock {
+			position: fixed;
+			bottom: 30px;
+			width: 100%;
+			text-align: center;
+			z-index: 100
+		}
+
+		.dock img {
+			margin: 0;
+		}
+
+		.center {
+			position: absolute;
+			margin: auto;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+
+		.section {
+			width: 1000px;
+			height: 600px;
+		}
+
+		.outer {
+			position: absolute;
+		}
+
+		.inner {
+			width: 250px;
+			height: 150px;
+		}
+
+		.s2_pic {
+			width: 50px;
+			height: 30px;
+			position: absolute;
+			background-image: url(images/section2_02.jpeg);
+			background-size: 1000px 600px;
+			transition: all 2s ease-out;
+		}
+
+		._outer {
+			background-image: url(images/section1_15.jpg);
+			transition: all 2s;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			//dock
+			$(document).on('mousemove', function (ev) {
+				$('.dock img').each(function (index) {
+					//计算每个盒子圆心的位置
+					var circleX = $(this).offset().left + $(this).width() / 2;
+					var circleY = $(this).offset().top + $(this).height() / 2
+					//计算三角形的两条边
+					var a = ev.pageX - circleX;
+					var b = ev.pageY - circleY;
+					var c = Math.sqrt(a * a + b * b);
+					var rate = 1 - c / 500;
+					if (rate < 0.5) {
+						rate = 0.5;
+					}
+					$(this).width(rate * 150);
+				});
+			})
+			// =======================================
+			var pics = ["images/section1_01.jpg", "images/section1_02.jpg", "images/section1_03.jpg", "images/section1_04.jpg", "images/section1_05.jpg", "images/section1_06.jpg", "images/section1_07.jpg", "images/section1_08.jpg", "images/section1_09.jpg", "images/section1_10.jpg", "images/section1_11.jpg", "images/section1_12.jpg", "images/section1_13.jpg", "images/section1_14.jpg", "images/section1_15.jpg", "images/section1_16.jpg"];
+
+			//初始化布局
+			function init1() {
+				var s_pic_width = $('.section').width() / 4;
+				var s_pic_height = $('.section').height() / 4;
+				for (var i = 0; i < 4; i++) {
+					var top = i * s_pic_height;
+					for (var j = 0; j < 4; j++) {
+						var outer = $('<div>').addClass('outer').appendTo('.section1');
+						var inner = $('<div>').addClass('inner').appendTo(outer);
+						var left = j * s_pic_width;
+						outer.css({
+							"width": s_pic_width + "px",
+							"height": s_pic_height + "px",
+							"left": left,
+							"top": top
+						});
+					}
+				}
+			}
+			//变小图片
+			function smallPic() {
+				$('.inner').each(function (index, element) {
+					$(element).css({
+						"background-image": "url(" + pics[index] + ")",
+						"transition": "background-image .5s",
+						"background-size": "contain",
+						"margin": "5px"
+					})
+				})
+
+				$('.outer').css({
+					"width": "260px",
+					"height": "160px",
+					"background": "white"
+				})
+
+
+			}
+			//变大图片
+			function bigPic(i) {
+				$('.inner').each(function (index) {
+					var left = (index % 4) * 250;
+					var top = parseInt(index / 4) * 150;
+					$(this).css({
+						"background-image": "url(" + pics[i] + ")",
+						"transition": "background-image .5s",
+						"background-position": "-" + left + "px " + "-" + top + "px",
+						"background-size": "1000px 600px",
+						"margin": "0"
+					})
+				})
+
+				$('.outer').css({
+					"width": "250px",
+					"height": "150px",
+					"background": "transparent"
+				})
+
+			}
+
+			//散开
+			function openPic() {
+				$('.outer').each(function (index) {
+					var size = 60;
+					var x = (index % 4 - 1.5) * size + "px";
+					var y = (parseInt(index / 4) - 1.5) * size + "px";
+					var r = Math.random() * 60 - 30;
+					$(this).css({
+						"transition": "transform 1s",
+						"transform": "translate(" + x + "," + y + ") rotate(" + r + "deg)",
+					});
+				});
+			}
+
+			//聚拢
+			function closePic() {
+				$('.outer').each(function (index) {
+					var size = 60;
+					var x = (index % 4 - 1.5) * size + "px";
+					var y = (parseInt(index / 4) - 1.5) * size + "px";
+					var r = Math.random() * 60 - 30;
+					$(this).css({
+						"transition": "transform 1s",
+						"transform": "translate(0,0) rotate(0deg)",
+					});
+				});
+			}
+			//========================================
+			function init2() {
+				for (var i = 0; i < 20; i++) {
+					var top = i * 30;
+					for (var j = 0; j < 20; j++) {
+						var left = j * 50;
+						var s2_pic = $('<div>').addClass('s2_pic').appendTo('.section2');
+						s2_pic.css({
+							"left": left,
+							"top": top,
+							"background-position": "-" + left + "px " + "-" + top + "px"
+						});
+
+					}
+				}
+			}
+
+			//散落
+			function straggle() {
+				$('.s2_pic').each(function () {
+					var r1 = Math.random() * 6000 - 3000;
+					var r2 = Math.random() * 6000 - 3000;
+					$(this).css({
+						"transform": "translate(" + r1 + "px," + r2 + "px)",
+						"opacity": 0
+					})
+				});
+			}
+			//收拢
+			function unstraggle() {
+				$('.s2_pic').each(function () {
+					$(this).css({
+						"transform": "translate(0px,0px)",
+						"opacity": 1
+					})
+				});
+			}
+			//========================================
+			function init3() {
+				var s_pic_width = $('.section').width() / 4;
+				var s_pic_height = $('.section').height() / 4;
+				for (var i = 0; i < 4; i++) {
+					var top = i * s_pic_height;
+					for (var j = 0; j < 4; j++) {
+						var _outer = $('<div>').addClass('_outer').appendTo('.section3');
+						var left = j * s_pic_width;
+						_outer.css({
+							"width": s_pic_width + "px",
+							"height": s_pic_height + "px",
+							"left": left,
+							"top": top,
+							"position": "absolute",
+							"background-position": "-" + left + "px " + "-" + top + "px"
+
+						});
+					}
+				}
+			}
+
+			//旋转换图
+			function circle(index) {
+				$('._outer').eq(index).css({
+					"transform": "rotateY(1080deg)",
+					"background-image": "url(" + pics[index] + ")",
+					"background-size": "contain"
+				})
+
+			}
+			//变回去
+			function uncircle(index) {
+				$('._outer').eq(index).css({
+					"transform": "rotateY(0)",
+					"background-image": "url(images/section1_15.jpg)",
+					"background-size": "auto",
+				})
+
+			}
+			//=========================================
+			//tab1
+			init1();
+			smallPic();
+			openPic();
+			var n = 0
+			$('.outer').each(function (index) {
+				$(this).on('click', function () {
+					n++;
+					if (n % 2 == 1) {
+						closePic();
+						bigPic(index);
+					} else {
+						openPic();
+						smallPic();
+					}
+
+				});
+			})
+			//tab2
+			init2();
+			var m = 0;
+			$('.section2').on('click', function () {
+				m++;
+				if (m % 2 == 1) {
+					straggle();
+				} else {
+					unstraggle();
+				}
+			})
+			//tab3
+			init3();
+			$('._outer').each(function (index) {
+				var p = 0;
+				$(this).on('click', function () {
+					p++;
+					if (p % 2 == 1) {
+						circle(index);
+					} else {
+						uncircle(index);
+					}
+
+				});
+
+			});
+
+			//选项卡切换
+			$('.section1').show().siblings().hide();
+			$('.dock img').each(function (index) {
+				$(this).on('click', function () {
+					$('.section').eq(index).show().siblings().hide();
+				})
+			})
+
+		});
+	</script>
+</head>
+
+<body>
+	<div class="dock">
+		<img src="images/01.png" width="100" />
+		<img src="images/04.png" width="100" />
+		<img src="images/05.png" width="100" />
+	</div>
+	<div class="tab">
+		<div class="section section1 center"></div>
+		<div class="section section2 center"></div>
+		<div class="section section3 center"></div>
+	</div>
+</body>
+
+</html>

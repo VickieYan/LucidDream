@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.center{position: absolute;margin: auto;left: 0;right: 0;top: 0;bottom: 0;}
+			canvas{box-shadow: 0 0 10px #666;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var canvas = document.getElementById('cvs');
+				var cvs = canvas.getContext('2d');
+				var centerX = canvas.width/2;
+				var centerY = canvas.height/2;
+				var r = 150;
+				var scale = 15;
+				var hourangle = Math.PI/6;
+				var minangle = Math.PI/30;
+				var secangle = Math.PI/30
+				var hourlength = r/2;
+				var minlength = r*2/3;
+				var seclenth = r*9/10
+				/*绘制表盘*/
+				drawBackground();
+				function drawBackground(){
+					//圆环
+					cvs.beginPath();
+					cvs.lineWidth = 3;
+					cvs.strokeStyle = "#333";
+					cvs.arc(centerX,centerY,r,0,Math.PI*2);
+					cvs.stroke();
+					//圆心
+					cvs.beginPath();
+					cvs.lineWidth = 5;
+					cvs.fillStyle = "black"
+					cvs.arc(centerX,centerY,r/40,0,Math.PI*2);
+					cvs.fill();
+					for(var i=0;i<Math.PI*2;i = i+hourangle){
+						//刻度
+						cvs.beginPath();
+						cvs.lineWidth = 2;
+						cvs.strokeStyle = "black";
+						cvs.moveTo(centerX+r*Math.sin(i),centerY-r*Math.cos(i));
+						cvs.lineTo(centerX+(r-scale)*Math.sin(i),centerY-(r-scale)*Math.cos(i))
+						cvs.stroke();
+					}
+					//绘制时间数字
+					cvs.beginPath();
+					cvs.fillStyle = "black";
+					cvs.font ="26px arial";
+					cvs.fillText("12",centerX-15,centerY-r+45);
+					cvs.fillText("6",centerX-8,centerY+r-25);
+					cvs.fillText("3",centerX+r-45,centerY+12);
+					cvs.fillText("9",centerX-r+35,centerY+12);
+					cvs.fill();
+				}
+				//绘制指针
+				function drawPoint(){
+					var d = new Date();
+					var hour = d.getHours();
+					var min = d.getMinutes();
+					var sec = d.getSeconds();
+					var hourdeg = (hour+min/60+sec/60/60)*hourangle;
+					var mindeg =(min+sec/60)*minangle;
+					var secdeg = sec*secangle;
+					//画时针
+					cvs.beginPath();
+					cvs.lineWidth = 3;
+					cvs.strokeStyle = "black";
+					cvs.moveTo(centerX,centerY);
+					cvs.lineTo(centerX+hourlength*Math.sin(hourdeg),centerY-hourlength*Math.cos(hourdeg))
+					cvs.stroke();
+					//画分针
+					cvs.beginPath();
+					cvs.lineWidth = 2;
+					cvs.strokeStyle = "black";
+					cvs.moveTo(centerX,centerY);
+					cvs.lineTo(centerX+minlength*Math.sin(mindeg),centerY-minlength*Math.cos(mindeg))
+					cvs.stroke();
+					//画秒针
+					cvs.beginPath();
+					cvs.lineWidth = 1;
+					cvs.strokeStyle = "#c61823";
+					cvs.moveTo(centerX,centerY);
+					cvs.lineTo(centerX+seclenth*Math.sin(secdeg),centerY-seclenth*Math.cos(secdeg))
+					cvs.stroke();
+					
+				}
+				drawPoint();
+				//每隔一秒调用画表针的方法
+				setInterval(function(){
+					cvs.clearRect(0,0,canvas.width,canvas.height);
+					drawBackground()
+					drawPoint();
+				},1000);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="cvs" class="center" width="500px"height="500px"></canvas>
+	</body>
+</html>

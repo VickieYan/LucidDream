@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0
+		}
+
+		#calendar {
+			width: 210px;
+			margin: 100px auto;
+			overflow: hidden;
+			border: 1px solid #000;
+			padding: 20px;
+			position: relative
+		}
+
+		#calendar h4 {
+			text-align: center;
+			margin-bottom: 10px
+		}
+
+		#calendar .a1 {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+
+		#calendar .a2 {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+
+		#calendar .week {
+			height: 30px;
+			line-height: 20px;
+			border-bottom: 1px solid #000;
+			margin-bottom: 10px
+		}
+
+		#calendar .week li {
+			float: left;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			list-style: none;
+		}
+
+		#calendar .dateList {
+			overflow: hidden;
+			clear: both
+		}
+
+		#calendar .dateList li {
+			float: left;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			list-style: none;
+		}
+
+		#calendar .dateList .ccc {
+			color: #ccc;
+		}
+
+		#calendar .dateList .red {
+			background: #F90;
+			color: #fff;
+		}
+
+		#calendar .dateList .sun {
+			color: #f00;
+		}
+
+		#calendar .dateList .others {
+			color: #CCCCCC;
+		}
+	</style>
+	<script src="./jquery/jquery-1.11.3.js"></script>
+	<script>
+		$(document).ready(function () {
+
+		})
+		$(function () {
+			var n = 0;
+			function calendar(n) {
+				$('.dateList').empty();
+				var oDate = new Date();
+				//获得当前年月日
+				oDate.setMonth(oDate.getMonth() + n);
+				var year = oDate.getFullYear();
+				var month = oDate.getMonth();
+				var day = oDate.getDate();
+				//判断该月有多少天
+				var arrAmount = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+				var dayAmount = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+				if (month == 1) {
+					if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+						dayAmount = 29;
+					}
+				}
+				//判断该月第一天为星期几
+				oDate.setDate(1);
+				var week = oDate.getDay();
+				//在每月前面插入空格
+				if (month == 0) {
+					for (var i = 31; i > 31 - week; i--) {
+						$('.dateList').prepend("<li class='others'>" + i + "</li>")
+					}
+				} else {
+					for (var i = arrAmount[month - 1]; i > arrAmount[month - 1] - week; i--) {
+						$('.dateList').prepend("<li class='others'>" + i + "</li>")
+					}
+				}
+
+
+				//插入所有日期
+
+				for (var i = 1; i <= dayAmount; i++) {
+					$('.dateList').append("<li>" + i + "</li>")
+				}
+
+				//判断该月最后一天是星期几
+				oDate.setDate(arrAmount[month]);
+				var week = oDate.getDay();
+				for (var i = 1; i <= 6 - week; i++) {
+					$('.dateList').append("<li class='others'>" + i + "</li>")
+				}
+
+				//标记颜色
+				if (n == 0) {
+					$('.dateList li').each(function (index, element) {
+						if ($(this).text() < day) {
+							$(this).addClass('ccc');
+						} else if ($(this).text() == day) {
+							$(this).addClass('red');
+						} else {
+							if (index % 7 == 0 || index % 7 == 6) {
+								$(this).addClass('sun');
+							}
+						}
+					})
+				} else if (n > 0) {
+					$('.dateList li').each(function (index, element) {
+						if (index % 7 == 0 || index % 7 == 6) {
+							$(this).addClass('sun');
+						}
+					})
+				} else {
+					$('.dateList li').each(function (index, element) {
+						$(this).addClass('ccc');
+					})
+				}
+
+
+
+
+				//设置月份
+				$('h4').text(year + "年" + (month + 1) + "月");
+			}
+
+			calendar(n);
+			$('.a1').on('click', function () {
+				n--;
+				calendar(n);
+			});
+			$('.a2').on('click', function () {
+				n++;
+				calendar(n);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="calendar">
+		<h4>2013年10月</h4>
+		<a href="javascript:;" class="a1">上月</a>
+		<a href="javascript:;" class="a2">下月</a>
+		<ul class="week">
+			<li>日</li>
+			<li>一</li>
+			<li>二</li>
+			<li>三</li>
+			<li>四</li>
+			<li>五</li>
+			<li>六</li>
+
+		</ul>
+		<ul class="dateList">
+
+
+		</ul>
+	</div>
+</body>
+
+</html>

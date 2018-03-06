@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>accordion</title>
+	<style type="text/css">
+		.accordion {
+			position: relative;
+		}
+
+		.pic {
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 0
+		}
+
+		img {
+			width: 100%;
+			height: 100%
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			//设置图片之间的间隔距离
+			var gap = 20;
+			$('.pic').each(function (index) {
+				$(this).css("left", index * gap + "px");
+			});
+			//鼠标滑动事件
+			$('.pic').on('mouseenter', function () {
+				var ac_index = $('.pic').index($(this));
+				$('.pic').each(function (index) {
+					if (index <= ac_index) {
+						$(this).stop().animate({
+							"left": index * gap + "px"
+						}, 500);
+					} else {
+						$(this).stop().animate({
+							"left": (index - 3) * gap + $(this).width() + "px"
+						}, 500);
+					}
+				});
+			})
+		})
+	</script>
+</head>
+
+<body>
+	<div class="accordion">
+		<div class="pic">
+			<img src="http://imgsrc.baidu.com/forum/w%3D580/sign=aabd3dfcdab44aed594ebeec831d876a/d48e9ceef01f3a290150eb789925bc315e607cc1.jpg">
+		</div>
+		<div class="pic">
+			<img src="http://imgsrc.baidu.com/forum/w%3D580/sign=51bf16130a7b02080cc93fe952d8f25f/eb049482d158ccbf53388b8c19d8bc3eb33541dd.jpg">
+		</div>
+		<div class="pic">
+			<img src="http://imgsrc.baidu.com/forum/w%3D580/sign=55509bd49822720e7bcee2f24bca0a3a/89dab2a1cd11728b1bb7b294c8fcc3cec1fd2cc3.jpg">
+		</div>
+		<div class="pic">
+			<img src="http://imgsrc.baidu.com/forum/w%3D580/sign=36a89895b07eca80120539efa1229712/8999a54bd11373f006bb5129a40f4bfbf9ed04dd.jpg">
+		</div>
+		<div class="pic">
+			<img src="http://imgsrc.baidu.com/forum/w%3D580/sign=e526700f9e510fb37819779fe932c893/c9f99fdda144ad345a69b931d0a20cf433ad858f.jpg">
+		</div>
+	</div>
+</body>
+
+</html>
