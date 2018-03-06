@@ -1,0 +1,26 @@
+.main{width: 1140px;margin: auto;text-align: center;height: 750px;}
+.main h1{line-height: 100px;padding-top: 50px;}
+.main p{width: 924px;margin: auto;color:#9c9c9c;line-height: 24px;font-size: 13px;}
+.main form{width: 1115px;margin: 30px auto;}
+.main form .import{
+	width: 345px;height: 50px;
+	border:solid 1px #b9b9b9 ;border-radius: 5px;
+	background: #ededed;padding-left:20px ;
+}
+.main form textarea{
+	width: 1113px;height: 250px;background: #ededed;
+	border:solid 1px #b9b9b9 ;border-radius: 5px;
+	margin-top: 30px;resize: none;
+}
+.main form .subMit{
+	width: 220px;height: 55px;
+	color: #FFFFFF;
+	background:#ed5844;
+	border-radius:5px;
+	box-shadow: 0 0 3px 3px #bc2e24 ;
+	margin-top: 40px;
+	border: none;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: pointer;
+}

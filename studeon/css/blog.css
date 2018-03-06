@@ -1,0 +1,56 @@
+.main{width: 1140px;margin:0 auto;height: 1970px;}
+.mainLeft{width: 870px;float: left;}
+.mainLeft h4{line-height: 22px;padding: 56px 0 0 0;}
+.mainImg,.mainImg>img{width: 813px;height: 416px;}
+.mainImg{border:solid 6px #ed5844;}
+.imgTime{line-height: 45px;font-size: 13px;}
+.imgTime>span{color: #f29181;}
+.imgTime>p{display: inline;}
+.imgTime>p,.imgTime>i{color: #b0b0b0;}
+.wordTime{font-size: 16px;line-height: 28px;}
+.wordTime>p{color: #f29181;display:inline-block;}
+.wordTime>span{color: #a0a4a7;}
+.explain{line-height: 22px;color:#b0b0b0 ;font-size: 13px;}
+.mainLeft h2{line-height: 35px;padding-top: 30px;}
+.mainLeft>form>span{display: block;line-height: 25px;padding-top: 10px;}
+.txt{width: 808px;height: 36px;background:#eeeeee;border: none;}
+.mainLeft>form>textarea{width: 808px;height: 146px;background: #EEEEEE;border: none;}
+.subMit{
+	display: block;
+	color: #FFFFFF;
+	background:#ed5844;
+	border-radius:5%;
+	box-shadow: 0 0 3px 3px #bc2e24 ;
+	margin-top: 20px;
+	width: 145px;
+	height: 50px;
+	border: none;
+	font-size: 18px;
+	font-weight: bold;
+}
+.person{width: 825px;height: 200px;border: solid 1px #d4d4d4;}
+.presonImg{float: left;margin: 20px 0 0 20px;}
+.presonImg>img{width: 157px;height: 157px;}
+.personIndroduce{float: right;width: 582px;}
+.personIndroduce>h5{line-height: 20px;margin-top: 15px;}
+.personIndroduce>p{font-size: 13px;line-height: 24px;color:#b0b0b0;}
+.personTime{margin-top: 15px;}
+.p1{margin-top: 10px;}
+.p2{margin-top: 40px;}
+.mainRight{float: right;padding-top: 40px;}
+.mainRight>h4{line-height: 60px;}
+.search>input{width: 240px;height: 40px;border: solid 1px #d4d4d4;padding-left: 10px;float: left;}
+.search>button{
+	width: 20px;height: 20px;
+	float: left;margin:10px 10px 10px -30px;border-color: transparent;
+	background: white url("../images/search.png") no-repeat;
+}
+.information-nav>li{
+	background: url("../images/b_arrow.png") no-repeat left center;
+	padding-left: 20px;
+}
+.information-nav>li>a{color:#d4d4d4;line-height: 24px;font-size: 13px;}
+.smallImg{width: 240px;}
+.smallImg img{width: 114px;height: 72px;margin-top: 10px;}
+.leftImg{float: left;}
+.rightImg{float: right;}

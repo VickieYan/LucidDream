@@ -1,0 +1,77 @@
+.banner{width: 100%;height: 520px;margin: auto;background: url(../images/bg.jpg)no-repeat center center;}
+.bannerInner{width: 1140px;margin: auto;}
+.bannerLeft{width: 335px;padding-top: 90px;float: left;}
+.bannerLeft p{color: white;margin-left: 10px;background: #ed5844;padding-left: 5px;
+font-weight: bold;font-size: 50px;line-height: 80px;}
+.b1,.b3{width: 315px;}
+.b2{width: 260px;border-top:solid white 1px ;border-bottom:solid white 1px ;}
+.bannerBtn{margin-top: 30px;margin-left: 10px;}
+.bannerBtn a{float: left;display: inline-block;width: 50px;height: 25px;margin-left: 5px;cursor: pointer;}
+.bannerBtn a:nth-child(1){background: #ed5844;}
+.bannerBtn a:nth-child(2),.bannerBtn a:nth-child(3),.bannerBtn a:nth-child(4){background: #FFFFFF;}
+.bannerBtn a:hover{background: #ed5844;}
+.bannerRight{float: right;margin-top: 85px;}
+.bannerRight img{width: 645px;}
+.main{width: 1140px;margin: auto;}
+.mainTop{height: 355px;padding: 50px 0 0 0;}
+.main>.mainTop>div{width: 360px;height: 130px;float: left;margin-top: 20px;
+background: url(../images/ser-bg.png) no-repeat right bottom;}
+.main>.mainTop>div:nth-child(2),.main>.mainTop>div:nth-child(3),
+.main>.mainTop>div:nth-child(5),.main>.mainTop>div:nth-child(6){margin-left: 24px;}
+.main>.mainTop .redImg{width: 67px;height: 123px;float: left;}
+.main>.mainTop>div:nth-child(1) .redImg{background: #ed5844 url(../images/s-icons.png) no-repeat 21px 45px;}
+.main>.mainTop>div:nth-child(2) .redImg{background: #ed5844 url(../images/s-icons.png) no-repeat -67px 45px;}
+.main>.mainTop>div:nth-child(3) .redImg{background: #ed5844 url(../images/s-icons.png) no-repeat -142px 45px;}
+.main>.mainTop>div:nth-child(4) .redImg{background: #ed5844 url(../images/s-icons.png) no-repeat 21px -70px;}
+.main>.mainTop>div:nth-child(5) .redImg{background: #ed5844 url(../images/s-icons.png) no-repeat -60px -70px;}
+.main>.mainTop>div:nth-child(6) .redImg{background: #ed5844 url(../images/s-icons.png) no-repeat -143px -70px;}
+.pinkWord{float: left;width: 260px;padding-left: 20px;background: #f5f5f5;}
+.pinkWord h5{padding: 20px 0 10px 0;}
+.pinkWord p{line-height: 18px;color: #969895;font-size: 13px;}
+.line{width: 100%;border-top:double 3px #eeeeee;}
+.buyLink{position: relative;height: 128px;margin: 55px 0;
+border-left:solid 5px #ed5746;	border-top:solid 1px #eeeeee;
+border-bottom:solid 1px #eeeeee;border-right:solid 1px #eeeeee;background: #eeeeee;}
+.t1{margin-left:35px;line-height: 30px;font-size: 15px;color: #474747;
+font-weight: bolder;padding-top: 43px;}
+.t2{margin-left:35px;line-height: 24px;font-size: 13px;color: #b0b0b0;}
+.buyBtn{position: absolute;width: 140px;height: 57px;
+background: #ed5746 url(../images/windows.png) no-repeat 10px center;text-align: center;
+padding-left: 15px;color: #FFFFFF;font-size: 16px;line-height: 57px;right: 45px;top: 40px;
+box-shadow: 0 0 10px 0 #c92d20 inset;border-radius: 5px;font-weight: bold;}
+.mainMid{width: 100%;height: 575px;border-top:double 3px #eeeeee;
+border-bottom:double 3px #eeeeee;position: relative;}
+.mainMid>h3{position: absolute;background: #FFFFFF;
+line-height: 40px;left: 0;width: 160px;top: -20px;}
+.woMan{height: 470px;background: #EEEEEE;width: 275px;margin-top: 45px;}
+.womanImg{position: relative;}
+.womanImg img{width: 245px;margin:15px 0 0 15px;}
+.womanImg span{position: absolute;	left: 15px;bottom: 5px;width: 110px;
+line-height: 25px;background: #ed5844;text-align: center;color: white;font-size: 13px;}
+.lico,.rico{width: 28px;height: 28px;position: absolute;bottom: 5px;}
+.lico{background: #ed5844 url(../images/s-icons.png) no-repeat -242px -84px;right: 45px;}
+.rico{background: #ed5844 url(../images/s-icons.png) no-repeat -277px -84px;right: 15px;}
+.woMan h4{line-height: 40px;margin: 5px 0 10px 15px;border-bottom:solid 1px #e7e7e7;width: 250px;}
+.woMan p{font-size: 13px;line-height: 24px;color: #ababab;margin: 0 0 0 15px;}
+.mainMid>div:nth-child(3){margin-left: 13px}
+.mainMid>div:nth-child(4){margin-left: 13px}
+.messageIco{width: 184px;height: 130px;position: absolute;top: 0;right: 0;
+background: url(../images/message_03.png) no-repeat;}
+.mainBot{width: 100%;height: 570px;position: relative;border-top:double 3px #eeeeee;}
+.mainBot>h3{position: absolute;background: #FFFFFF;line-height: 40px;left: 0;width: 140px;top: -20px;}
+.botLeft{width: 722px;margin-top: 40px;}
+.botLeft>div{width: 340px;}
+.lBox h4{line-height: 50px;border-bottom: 2px solid #E7E7E7;}
+.lBox p{font-size: 13px;line-height: 24px;color: #ABABAB;border-bottom: 2px solid #E7E7E7;padding: 10px 0;}
+.more{display: block;color: #7f7f7f;font-size: 15px;line-height: 100px;margin-left: 15px;}
+.more i{width: 13px;height:12px;display: inline-block;margin-left: 10px;
+		background: url(../images/s-icons.png) no-repeat -295px -183px;cursor: pointer;}
+.botRight{width: 350px;margin-top: 40px;margin-right: 20px;}
+.person-img{float: left;margin-right: 15px;}
+.person-img img{width: 86px;float: left;}
+.av{height: 200px;}
+.av h4{line-height: 24px;color: #3c3c3c;}
+.av span{display: block;line-height: 24px;color: #818181;font-size: 15px;padding-top: 5px;}
+.av a{display: block;line-height: 24px;color: #ed5844;font-size: 15px;padding-bottom: 10px;}
+.av p{line-height: 20px;color: #999999;font-size: 13px;padding: 10px 0 0 0 ;}
+.linger{width: 20px;height:15px;display: inline-block;background: url(../images/quotes.png) no-repeat 0 0;}

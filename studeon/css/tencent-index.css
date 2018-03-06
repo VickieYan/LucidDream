@@ -1,0 +1,147 @@
+/*预设*/
+body,ul,p,h1,h2,h3,h4,h5,h6,dl,dt,dd{margin: 0;padding: 0;}
+ul{list-style: none;}
+a{text-decoration: none;}
+img{border: none;}
+*{font-family: "microsoft yahei";}
+.clear{clear: both;}
+.leftBox{float: left;}
+.rightBox{float: right;}
+/*顶部*/
+header{width: 100%;height: 34px;line-height: 34px;background: #171f2a;}
+.headInner{width: 1190px;margin: auto;font-size: 13px;}
+.headInner ul{float: right;}
+.headInner ul li{float: left;}
+.hoverFont{color: #ff9d0e;}
+.col,.grayFont{color: #7b838e;}
+.col,.nomorlFont{padding-right: 10px;}
+.personFont{
+	background: url(../images/txy_03.png) no-repeat 0 center;
+	padding-left: 25px;
+	padding-right: 10px;
+}
+.lastFont{
+	color: #7b838e;
+	background: url(../images/txy_06.png) no-repeat right center;
+	padding-right: 23px;
+}
+.nav{width: 100%;height: 60px;line-height: 60px;background: #2c3343;}
+.logo{float: left;}
+.navInner{width: 1190px;margin: auto;line-height: 60px;}
+.logoL{margin:15px 5px 0 5px ;}
+.logoM{margin:8px 5px 0 5px ;}
+.logoR{margin:11px 5px 0 5px ;}
+.navInner ul{float: left;}
+.navInner ul li{float: left;}
+.navInner ul li a{font-size:16px;display: inline-block;padding: 0 20px;}
+.whiteFont{color: #FFFFFF;}
+.now{background:#202833 ;}
+/*宣传*/
+.banner{width: 100%;height: 499px;background:#FFFFFF url(../images/bannertx_02.png) no-repeat center 0 ;}
+.title{height: 40px;width: 100%;background: #e6e6e6;}
+.titleInner,.net{margin: auto;width: 1190px;}
+.title span{
+	display: inline-block;
+	line-height: 40px;
+	font-size: 14px;
+	color: black;
+	padding-left: 15px;
+	background: url(../images/dian_05.png) no-repeat 0 center;
+}
+.title span:nth-child(1),.title span:nth-child(2){width: 390px;}
+.net{margin-top: 35px;height: 320px;}
+.net>div{
+	width: 186px;
+	height: 145px;
+	border: solid 1px #cbcbcb;
+	padding-top: 100px;
+	text-align: center;
+	float: left;
+	margin: 5px;
+}
+.netBox h3{line-height: 50px;font-weight: normal;}
+.netBox p{color: #cbcbcb;font-size: 13px;}
+.money{margin-top: 30px;}
+.money sup{color:#f4721a;font-size: 25px;}
+.net1{background: url(../images/img559e276e56983.png) no-repeat center 25px;}
+.net2{background: url(../images/img559e27ae2c081.png) no-repeat center 25px;}
+.net3{background: url(../images/img559e281bbf193.png) no-repeat center 25px;}
+.net4{background: url(../images/img559e286f7cdee.png) no-repeat center 25px;}
+.net5{background: url(../images/img55b6167a7ed33.png) no-repeat center 25px;}
+.net6{background: url(../images/img55bb2e9d075fe.png) no-repeat center 25px;}
+.lineRow{width: 100%;height: 2px;background: #f9f9f9;}
+.userTitle{margin-top: 10px;line-height: 100px;width: 1140px;margin: auto;font-weight: normal;}
+.gameNav{width: 1190px ;margin: auto;text-align: center}
+.gameNav ul{display: inline-block;}
+.gameNav ul li{float: left;padding: 0 10px;}
+.gameNav ul li a{line-height: 40px;font-size: 20px;padding: 0 10px 5px;}
+.blueFont{color:#0f79cd;border-bottom: solid 3px #0f79cd;}
+.otherA{color: #cbcbcb;}
+.gameImg{width: 1190px ;margin: auto;margin-top: 50px;height: 250px;}
+.gameImg>div{float: left;width: 186px;text-align: center;margin: 0 5px;}
+.gameBox h3{line-height: 35px;font-weight: normal;margin-top: 10px;}
+.gameBox p{color: #cbcbcb;font-size: 13px;line-height: 24px}
+.brand{width:100%;background: #fafbfd;height: 310px;}
+.brandInner{width: 1190px;margin: auto;}
+.leftBrand{width: 350px;}
+.leftBrandBox h2{font-weight: normal;line-height: 80px;display: inline-block;float: left;letter-spacing: 5px;}
+.leftBrandBox a{line-height: 90px;font-size: 13px;color: #1a59a9;float: right;}
+.leftBrand ul li,.rightBrand ul li{
+	line-height: 40px;	
+	background: url(../images/dian_05.png) no-repeat 0 center;
+	font-size: 13px;
+	padding-left: 15px;
+}
+.leftBrand ul li a,.rightBrand ul li a{color: black;}
+.leftBrand ul li span,.rightBrand ul li span{float: right;color: #cbcbcb;}
+.MidBrand{margin-left: 70px;}
+.rightBrand{width: 340px;}
+/*代金劵*/
+.lastTitle{width: 100%;height: 75px;text-align: center;}
+.lastTitle p{font-size: 15px;display: inline-block;line-height: 75px;}
+.lastTitle a{
+	display: inline-block;
+	padding: 5px 15px;
+	background: #0071cf;
+	color: #FFFFFF;
+	font-size: 13px;
+}
+.lastFlash{height: 321px;width: 100%;background:#1271cb url(../images/lastflash_02.png) no-repeat center 0;}
+.footer{width: 100%;height: 430px;background: #27303f;}
+.footInner{margin: auto;width:1190px}
+.footTop{padding-top: 50px;}
+.footDl{width: 190px;float: left;}
+.footDl dt{color: #FFFFFF;font-size:15px;line-height: 40px;}
+.footDl dd{color: #61737f;font-size:13px;line-height: 30px;}
+.er p{color: #FFFFFF;font-size:15px;line-height: 40px;width: 180px;}
+.weib{line-height: 42px;font-size: 13px;color:#61737f;}
+.footIco1{background:url(../images/footIco_03.png) no-repeat 0 center;
+		width: 18px;height:17px;
+		display: inline-block;
+		margin-left: 5px;
+}
+.footIco2{
+	background:url(../images/footIco_05.png) no-repeat 0 center;
+	width: 14px;height:17px;
+	display: inline-block;
+	margin-left: 3px;
+}
+.rightDl{padding-left: 20px;line-height: 20px;}
+.rightDl dt{color: #FFFFFF;font-size:13px;}
+.rightDl dd{color: #61737f;font-size:13px;}
+.iso{margin: 20px 0 0 0;}
+.footMid{text-align:center;margin-top: 50px;border-bottom: solid 1px #343e4a;}
+.footMid i{
+	font-size: 22px;
+	color:#61737f;
+	font-weight: bold;
+	display: inline-block;
+	margin: 0 30px 0 0;
+	line-height: 24px;
+	vertical-align: top;
+}
+.footMid ul{display: inline-block;padding-top: 3px;}
+.footMid ul li{margin: 0 0 0 10px;float: left;color:#61737f;}
+.footMid ul li a{font-size: 13px;color:#61737f;line-height: 24px;padding-left: 10px;display: inline-block;}
+.footBot{text-align: center;margin-top: 10px;}
+.footBot p{color:#525e6a;line-height: 30px;font-size: 13px;}

@@ -1,0 +1,24 @@
+.main{width: 1140px;margin: auto;text-align: center;height: 850px;}
+.main h1{line-height: 100px;padding-top: 50px;}
+.main ul{margin: 0px auto 30px;display: inline-block }
+.main ul li{float: left;line-height: 40px;padding: 0 20px;}
+.main ul li:nth-child(1) a{color: red;}
+.main ul li:nth-child(2) a,
+.main ul li:nth-child(3) a,
+.main ul li:nth-child(4) a,
+.main ul li:nth-child(5) a{color: black;}
+.imgBox>div{position: relative;float: left;height: 183px;cursor: pointer;}
+.imgBox>div>img{float: left;width: 285px;}
+.hello{
+	position: absolute;
+	background: deepskyblue;
+	opacity: 0;
+	width: 285px;
+	line-height: 182px;
+	transition: all .5s linear;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: bold;
+	left: 0;bottom: 0px;	
+}
+.imgBox>div:hover .hello{opacity: 0.5;}
