@@ -3,9 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-body{
-	height: 1000px;
-}
+
 
 a{
 	text-decoration: none;
@@ -25,6 +23,24 @@ ul{
 
 .background img{
 	position: absolute;
+}
+
+.main {
+	writing-mode: vertical-rl;
+	float: right;
+	padding: 40px;
+	line-height: 40px;
+	letter-spacing: 5px;
+}
+
+.main a {
+	background: #dfdfdf;
+	border-radius: 3px;
+	margin: 2px;
+	padding: 2px;
+}
+.main a:hover {
+	background: #ccc;
 }
 
 
