@@ -1,0 +1,69 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+#interface {
+    position: absolute;
+    width: 320px;
+    height: 480px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(../img/game_bg.jpg);
+    position: relative;
+}
+
+.start {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 0 10px red;
+    position: absolute;
+    top: 220px;
+    left: 130px;
+    cursor: pointer;
+}
+
+.end {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 0 10px red;
+    position: absolute;
+    top: 220px;
+    left: 70px;
+    cursor: pointer;
+    display: none;
+}
+
+.score {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    left: 65px;
+    top: 10px;
+}
+
+.blood {
+    width: 0px;
+    height: 16px;
+    position: absolute;
+    left: 63px;
+    top: 66px;
+    background: url(../img/progress.png);
+    transition: width 1s;
+}
+
+.wolf {
+    width: 108px;
+    height: 101px;
+    position: absolute;
+}
